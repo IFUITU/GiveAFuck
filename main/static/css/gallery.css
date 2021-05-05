@@ -1,0 +1,95 @@
+/* body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 1rem;
+} */
+.gallery h2 a {
+    color: gray;
+}
+.gallery{
+    height: 400px;
+    margin-bottom: 0;
+    background-position: top center !important;
+    z-index: 0;
+    position: relative;
+}
+.img {
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.align-items-end {
+    -webkit-box-align: end !important;
+    
+    align-items: flex-end !important;
+}
+.gallery:hover .icon {
+    opacity: 1;
+}
+.gallery .icon {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    width: 70px;
+    height: 70px;
+    content: '';
+    z-index: 1;
+    background: #fff;
+    -webkit-transform: translate(50%, 50%);
+    -ms-transform: translate(50%, 50%);
+    transform: translate(50%, 50%);
+    margin-top: -70px;
+    opacity: 0;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+a:hover, a:focus {
+    text-decoration: none;
+    color: #4e9525;
+    outline: none !important;
+}
+a:hover {
+    color: grey;
+    text-decoration: underline;
+}
+.image-popup {
+    cursor: -webkit-zoom-in;
+    cursor: -moz-zoom-in;
+    cursor: zoom-in;
+}
+.align-items-center {
+    -webkit-box-align: center !important;
+    -ms-flex-align: center !important;
+    align-items: center !important;
+}
+.justify-content-center {
+    -webkit-box-pack: center !important;
+    -ms-flex-pack: center !important;
+    justify-content: center !important;
+}
+.d-flex {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+}
+/* a {
+    -webkit-transition: .3s all ease;
+    -o-transition: .3s all ease;
+    transition: .3s all ease;
+    color: #4e9525;
+}
+a {
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+} */
+*, ::before, ::after {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}

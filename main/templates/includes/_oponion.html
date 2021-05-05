@@ -1,0 +1,28 @@
+
+    <div class="title_oponion   d-flex mt-5 align-items-center  text-white">
+        <h2> <b> Oponion {{object.stars}}</b></h2>
+    </div>
+    
+        <div class="star-rating">
+            
+                
+                
+                
+                <fieldset class="rating star d-flex justify-content-center">
+                    <form action="{%url 'main:Like' object.id 'v' %}" method="POST">
+                        {%csrf_token%}
+
+                            <input type="radio" id="field6_star5" name="rating2" value="5" class="star star-5"/><label class = "full" for="field6_star5"></label>
+                            <input type="radio" id="field6_star4" name="rating2" value="4" class="star star-4"/><label class = "full" for="field6_star4"></label>
+                            <input type="radio" id="field6_star3" name="rating2" value="3" class="star star-3"/><label class = "full" for="field6_star3"></label>
+                            <input type="radio" id="field6_star2" name="rating2" value="2" class="star star-2"/><label class = "full" for="field6_star2"></label>
+                            <input type="radio" id="field6_star1" name="rating2" value="1" class="star star-1"/><label class = "full" for="field6_star1"></label>
+                            
+                                <input type="submit" value="Vote" class="ml-auto" />
+                            
+                    </form>
+                </fieldset>
+            
+        </div>
+
+

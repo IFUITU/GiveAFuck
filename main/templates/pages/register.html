@@ -1,0 +1,5 @@
+{%extends 'includes/_modal.html'%}
+{%load crispy_forms_tags%}
+{%block form%}{{register_form|crispy}}{%endblock%}
+{%block btn%}Join{%endblock%}
+{%block url%}{%url 'user:join'%}{%endblock%}

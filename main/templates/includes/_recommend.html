@@ -1,0 +1,24 @@
+<div class="title_  d-flex mt-5 align-items-center  text-white ">
+    <h2 class="icomoon icon-joomla ml-3"></h2><h4 class="ml-2"> <b>Strange Articles</b></h4>
+    
+  </div>
+  
+  
+  <div class="row  d-flex justify-content-center ">
+  
+  
+   {%for i  in recommend%}
+    <div class="m-4  col-lg-3 p-0 ">
+      <a class="" href="{%if i.video%} {%url 'main:bonus' i.id%}{%else%} {%url 'main:detail' i.id%}{%endif%}">
+        <div class="article-img neon_card col rounded" style="background-image:url('{{i.image_url}}');"></div>
+        <h5 class="text-center mt-lg-3 mt-sm-2 csilver">{{i.title}}</h5>
+            
+            <div class="d-flex justify-content-center">
+              <a class="dwnlink btn csilver" href="{%if i.video%} {%url 'main:bonus' i.id%}{%else%} {%url 'main:detail' i.id%}{%endif%}"><b class="icon icon-download"></b>Download</a>
+            </div>
+      </a>
+    </div>
+  {%empty%}
+    
+  {%endfor%}
+  </div>

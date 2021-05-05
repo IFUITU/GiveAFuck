@@ -1,0 +1,117 @@
+{%extends 'base.html' %}
+{%load static%}
+
+{%block content%}
+            <!-- body -->
+           
+            {%block category%}{%endblock%}
+              {%for i in games%}
+             
+              <div class="row  rounded text-light  mb-5 article-row m-3">
+                
+                  <div class="col-lg-4 article-img" style="background-image:url('{{i.image_url}}');"></div>
+                
+              
+                
+                  <div class="d-flex flex-column col-lg-8 container p-3">
+                    <a href="{%if i.video.name and i.file.name == ''%}{%url 'main:bonus' i.id%} {% else %} {%url 'main:detail' i.id%}{%endif%}"><h3 class="article_title">{{i.title}} </h3></a>
+                      <div class="row">
+                        <div class="col-lg-2">
+                          <span class="c888"><small>{{i.pub_date|date:"Y-m-d"}}</small> </span>
+                        </div>
+
+                        <div class="col-lg-3">
+                          <span class="888"><a href="{%url 'main:by-category' i.platform_id %}"> 
+                            <span  class="plt_icon"></span>
+                           <small class="p1atf0rm">{{i.platform}}</small></a>
+                          </span>
+                        </div>
+
+                        <div class="col-lg-5 c888">
+                          <span class=" icon icon-download Views"><span class="status">{{i.count_dwnd}} <small>{%if i.video.url != '' and i.file.url == ""%}Views{%else%}Downloads{%endif%}</small></span> </span>
+                        </div>
+                          <div class="col-lg-2">
+                            <span class="ml-auto text-light rounded-circle bg-danger">+{{i.age_limit}}</span>
+                          </div>
+                        
+                      </div>
+                    <div class="mt-3 c888"><p class="article-desc">{{i.desc}}</p></div>
+                    <div class=" ml-auto mt-auto">
+                      {%if i.video.name %}<a class="btn btn-lg neon_a" href="{%url 'main:bonus' i.id%}"><i class="icomoon icon-film">GamePlay</i></a>{%endif%}
+                      {%comment%}<a class="btn btn-lg neon_a" href="{%url 'main:Like' i.pk 'u'%}" data-toggle="ajax"><i class="icomoon icon-thumbs-up"></i></a>{%endcomment%}
+                      <a class="btn btn-lg neon_a" href="{%if i.video.name and i.file.name == ''%}{%url 'main:bonus' i.id%} {% else %} {%url 'main:detail' i.id%}{%endif%}">Read More</a>
+                    </div>
+                  </div>
+              </div>
+                {%empty%}
+                <div class="d-flex justify-content-center align-items-center">
+        
+                  <div class="col-6 "><h1 class="text-warning">I can't find anything!</h1></div>
+                  <div class="emoji col-6" style="{%static 'img/cry.gif'%}"></div>
+                </div>
+                {%endfor%}
+            <div class="d-flex justify-content-center">
+              <nav aria-label=" bg-dark" aria-label="Page navigation example">
+                <ul class="pagination bg-warning">
+                  
+                  <li class="page-item bg-dark">
+                    {%if games.has_previous%}
+                    <a class="page-link previous" href="?page={{games.previous_page_number}}" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    
+                  </li>
+                  
+                    <li class="page-item "><a class="page-link " href="?page={{games.previous_page_number}}">{{games.previous_page_number}}</a></li>
+                  {%endif%}
+                  <li class="page-item "><a class="page-link " href="?page={{request.GET.page}}" onclick="return false" data-toggle="tooltip" data-placement="top" title="You are on current page!">...</a></li>
+                  {%if games.has_next%}
+                  <li class="page-item "><a class="page-link " href="?page={{games.next_page_number}}">{{games.next_page_number}}</a></li>
+                  
+                  <li class="page-item bg-dark">  
+                    <a class="page-link next" href="?page={{games.next_page_number}}" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </li>
+                  {%else%}
+                  <li class="page-item "><a class="page-link " href="?page=1" >&empty;</a></li>
+                  {%endif%}
+                 
+                </ul>
+              </nav>
+            </div>
+             
+           
+    
+{%comment%}
+<!-- {% for contact in games %}
+    {# Each "contact" is a Contact model object. #}
+    {{ contact.title|upper }}<br>
+    ...
+{% endfor %}
+
+<div class="pagination">
+    <span class="step-links">
+        {% if games.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ games.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ games.number }} of {{ games.paginator.num_pages }}.
+        </span>
+
+        {% if games.has_next %}
+            <a href="?page={{ games.next_page_number }}">next</a>
+            <a href="?page={{ games.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div> -->
+{%endcomment%}
+           
+{%endblock%}      
+          
+      
+    

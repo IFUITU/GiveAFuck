@@ -1,0 +1,110 @@
+{%extends 'base.html' %}
+{%load static %}
+{%load filter_tags%}
+{%block css%} <link rel="stylesheet" type="text/css" href="{%static 'css/rating.css'%}"/> 
+<link rel="stylesheet" type="text/css" href="{%static 'vendor/fonts/fontawesome.min.css'%}"/>
+{%endblock%}
+{%block content%}
+<!-- <h1 class="text-light">{{request.resolver_match.kwargs.id}}</h1> -->
+
+<div class="desc p-lg-5 p-sm-0">
+  <h3 class="mb-3 d-flex"> <span class="p1atf0rm">{{object.platform.name_eng}}</span><span class="ml-auto text-light rounded-circle bg-danger"> +{{object.age_limit}} </span></h3>
+<div class="container">
+
+<div class="row  text-light  p-0 mb-3  ">
+  
+
+  <div class="col-lg-4 article-img" style="background-image:url('{{object.image_url}}');"></div>
+
+  <div class="col-lg-8  d-flex container row p-3">
+    <div class="col-lg-12 text-warning"><h4>{{object.title}}</h4></div>
+    
+     
+      <div class="col-lg-6 ">
+     
+        {%for i in object.stars|times%}
+          <span class="text-warning M6" data-toggle="tooltip" data-placement="top" title="{{object.rated_user}} USERS rated!"><i class="icomoon icon-fire"></i></span>
+        {%endfor%}
+      </div>
+      <div class="col-lg-6 footer_p"><span class="icon icon-download Views "><b name="cnt_dwn" class="status">{{object.count_dwnd}} Downloads</b> </span> </div>
+      
+      <div class="col-lg-12 mt-3"><span class="p1atf0rm" >{{object.platform.name_eng}}</span></div>
+
+      <div class="col-lg-12 mt-3">Birnarsalar</div>
+            
+      <div class=" ml-auto mt-auto">
+        
+       
+          {%if object.video.name%}<a class="btn btn-lg neon_a" href="{%url 'main:bonus' object.id%}"><i class="icomoon icon-film">GamePlay</i></a>{%endif%}
+          {%comment%}<a href="{%url 'main:Like' object.id 'u'%}" data-toggle="ajax" class="btn btn-lg neon_a ml-auto mr-2 csilver"> <i class="icomoon icon-thumbs-up "></i></a> {%endcomment%}
+          <a class="btn btn-lg neon_a csilver"  href="{%if object.file %}{%url 'main:Like' object.id 'd'%}{%else%}#{%endif%}" name='dwnlink'><i class="icon icon-download ">Download</i></a>
+        
+      </div>
+
+  </div>
+  
+</div>
+</div>
+<!-- ================================== -->
+<!-- <div id="imgModal" class="modal ">
+  
+    <div>
+      <span class="close btn btn-lg">&times;</span>
+      <img class="modal-content" id="img01">
+      <div id="caption" class="text-light font-weight-bold text-center"></div>
+    </div>
+  
+</div> -->
+<!-- ================================== -->
+<div class="slick-slider text-light  ">
+
+{%for k in photos%}
+
+  <div  class="article-img col" style="background-image:url('{{k.img.url}}');" data-img="imgToModal" data-url="{{k.img.url}}"></div>
+  
+{%endfor%}
+
+</div>
+
+
+
+<div class="  p-lg-5 p-sm-3 csilver ">
+  <p class="mt-3">
+   {{object.desc}}
+  </p>
+  
+</div>
+
+
+<div class="row download_link d-flex justify-content-center mt-5  position-relative " >
+  
+  <button id='download_start'  type="button" class="position-absolute" >
+    <a href="{%if object.file %}{%url 'main:Like' object.id 'd'%}{%else%}#{%endif%}">
+      <h4>
+        <strong class="text-light"><i class="icon icon-download"></i> Download</strong>
+        <h5 class="text-light">{%if object.file%} {{object.filesize}}{%else%}CommingSoon{%endif%}</h5>
+      </h4>
+    </a>
+
+  </button>
+  
+</div>
+
+
+  {%include 'includes/_recommend.html'%}
+
+{%if user.is_authenticated%}
+  {%include 'includes/_oponion.html'%}
+{%endif%}
+</div>
+
+{%comment%}
+
+{%include 'includes/advice.html'%}
+{%include 'includes/projects.html'%}
+
+{%endcomment%}
+
+
+
+  {%endblock%}

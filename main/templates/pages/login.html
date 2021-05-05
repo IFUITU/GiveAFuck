@@ -1,0 +1,6 @@
+{%extends 'includes/_modal.html'%}
+{%load crispy_forms_tags%}
+{%block form%}{{login_form|crispy}}{%endblock%}
+{%block btn%}Login{%endblock%}
+{%block url%}{%url 'user:login'%}{%endblock%}
+
