@@ -9,7 +9,7 @@ class RegisterForm(forms.ModelForm):
         if self.cleaned_data['password'] != self.cleaned_data['confirm']:
             print('Confirmation is not  VLID')
             raise ValidationError('Confirm & Password is not equal!')
-        return self.cleaned_data['password']
+        return self.cleaned_data['confirm']
     class Meta:
         model  = User
         fields = ('username', 'password', 'confirm','email')

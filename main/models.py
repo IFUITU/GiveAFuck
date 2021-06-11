@@ -11,8 +11,10 @@ def get_upload_path(instance, filename):
     ext = filename.split('.')[-1]
     file_name = filename.split('.')[:1]
     folders = {'png':'img', 'jpeg':'img', 'svg':'img', 'jpg':'img', 'rar':'files','exe':'files', 'apk':'android', 'zip':'files','mp4':'video'}
-    return "{}-{:%Y}/{:%Y-%m-%d-%H-%M-%S}-{}.{}".format(
-        folders.get(ext, 'upload'), datetime.now(), datetime.now(), file_name,ext
+    
+    # print(file_name, ext)
+    return "{}-{:%Y}/{:%Y-%m-%d-%H:%M}-{}.{}".format(
+        folders.get(ext, 'media'), datetime.now(), datetime.now(), file_name,ext
     )
 
 
@@ -57,7 +59,7 @@ class Game(models.Model):
     @property
     def ext(self):
         extension = self.video.name
-        print(extension,'/'*30)
+        # print(extension,'/'*30)
         return extension
 
     
@@ -77,13 +79,16 @@ class Game(models.Model):
         return str(value)+ext
     
     def save(self, **kwargs):
+        print("SAVECALL".center(30))
         if not self.title_img.closed:
             img = Image.open(self.title_img)
             img.thumbnail((300, 300), Image.ANTIALIAS)
             tmp = BytesIO()
             img.save(tmp, 'png')
-            self.title_img = File(tmp, 't.png')
-            return super().save(**kwargs)
+            self.title_img = File(tmp, '{}.png'.format(self.title))
+          
+        return super(Game, self).save(**kwargs)
+
     #if we created def(**args) how to call this method by sending arguments in template?
 
 class Post_Img(models.Model):
@@ -91,13 +96,15 @@ class Post_Img(models.Model):
     img = models.ImageField(upload_to=get_upload_path)
 
     def save(self, **kwargs):
+        
         if not self.img.closed:
             photo = Image.open(self.img)
             photo.thumbnail((300, 300), Image.ANTIALIAS)
             tmp = BytesIO()
             photo.save(tmp, 'png')
             self.img = File(tmp ,'t.png')
-            return super().save(**kwargs)
+        return super().save(**kwargs)
+
 class Category(models.Model):
     name_eng = models.CharField(max_length=50)
 

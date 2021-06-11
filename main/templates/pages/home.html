@@ -9,11 +9,11 @@
              
               <div class="row  rounded text-light  mb-5 article-row m-3">
                 
-                  <div class="col-lg-4 article-img" style="background-image:url('{{i.image_url}}');"></div>
+                  <div class="col-lg-4 article-img col-sm-12" style="background-image:url('{{i.image_url}}');"></div>
                 
               
                 
-                  <div class="d-flex flex-column col-lg-8 container p-3">
+                  <div class="d-flex flex-column col-lg-8 col-sm-12 container p-3">
                     <a href="{%if i.video.name and i.file.name == ''%}{%url 'main:bonus' i.id%} {% else %} {%url 'main:detail' i.id%}{%endif%}"><h3 class="article_title">{{i.title}} </h3></a>
                       <div class="row">
                         <div class="col-lg-2">

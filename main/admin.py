@@ -17,6 +17,8 @@ class GameAdmin(admin.ModelAdmin):
     inlines = [ImgInstatnceInine]
     actions = [is_bonus, is_post]
     list_display = ('title', 'platform', 'pub_date', 'bonus')
+
+
 admin.site.register(Game,GameAdmin)
 
 admin.site.register(Category)

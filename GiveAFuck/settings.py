@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-
+from django.contrib import messages
 from pathlib import Path
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'main',
     'debug_toolbar',
-    'user'
+    'user',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -128,7 +129,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 # HMAC_SECRET = 'HMAC_SECRET' #single key
 # HMAC_SECRETS = {
@@ -166,3 +167,11 @@ CRONJOBS = [
 
 LOGIN_URL = '#myModal'
 LOGIN_REDIRECT_URL = 'main:index'
+
+
+MESSAGE_TAGS = {
+    messages.INFO:'alert alert-info',
+    messages.SUCCESS:'alert alert-success',
+    messages.WARNING:'alert alert-warning',
+    messages.ERROR:'alert alert-danger',
+}

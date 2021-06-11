@@ -37,7 +37,7 @@
        
           {%if object.video.name%}<a class="btn btn-lg neon_a" href="{%url 'main:bonus' object.id%}"><i class="icomoon icon-film">GamePlay</i></a>{%endif%}
           {%comment%}<a href="{%url 'main:Like' object.id 'u'%}" data-toggle="ajax" class="btn btn-lg neon_a ml-auto mr-2 csilver"> <i class="icomoon icon-thumbs-up "></i></a> {%endcomment%}
-          <a class="btn btn-lg neon_a csilver"  href="{%if object.file %}{%url 'main:Like' object.id 'd'%}{%else%}#{%endif%}" name='dwnlink'><i class="icon icon-download ">Download</i></a>
+          <a class="btn btn-lg neon_a csilver"  href="{%if object.file.name %}{%url 'main:Like' object.id 'd'%}{%else%}#{%endif%}" name='dwnlink'><i class="icon icon-download ">Download</i></a>
         
       </div>
 

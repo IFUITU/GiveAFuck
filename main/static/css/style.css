@@ -74,7 +74,19 @@ hr{
 .dropdown-menu{
   background-color: #14171a;
 }
+.user-avatar{
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  top:0;
+  right: 0;
+}
 
+.message-gif{
+  width: 65px;
+  height: 65px;
+  background-position: 50% 50%;
+}
 
 /* ---------------------- */
 .article-img{
@@ -396,6 +408,14 @@ footer .fuck-icon{
     label.full{
       font-size: 35px !important;
     }
+    .article-img{
+     
+      width: 100%;
+      height:20px !important;
+      
+      
+      
+  }
 }
 
 @media(max-width:242px){
@@ -421,7 +441,7 @@ footer .fuck-icon{
 
 /* =============DETAIL PAGE======================================= */
 .close {
-  position: fixed;
+  /* position: fixed; */
   top: 100px;
   right: 0;
   color: #f1f1f1;

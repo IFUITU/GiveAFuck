@@ -168,6 +168,21 @@ if (dwnd_a.text() == 'CommingSoon'){
   $('a[aria-disabled="false"]').attr('onclick','return false');
 };
 
+let login = $('#login');
+let register = $('#register');
+
+$('#onclick-register').on('click', function(e){
+  // login.css({"display":"none"});
+  $.get('/user/login/', function(response){
+    console.log(response);
+    $('#myModalJS').html('');
+    $('#myModalJS').html(response);
+  });
+  return false;
+}); 
+
+
+
 
 // Img to modal View
 // var modal = document.getElementById("imgModal");
@@ -189,3 +204,10 @@ if (dwnd_a.text() == 'CommingSoon'){
 //   modal.style.display = "none";
 // }
 ////////////////////////////////////
+
+$.ajax({
+  url:'/Home/GamesApi/',
+  success:function(res){
+    // alert(JSON.stringify(res))
+  }
+})

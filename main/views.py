@@ -52,9 +52,8 @@ class Like(View,LoginRequiredMixin):
                 new_path = file_path.replace(old_filename, new_filename)
                 Games.file.name = ''.join(child_path) + '/' + new_filename
                 # print(Games.file.path,'/////////////////////', new_path, '+++++++++++++++++++++++++++++++++++++++++',new_filename)
-                
+        
                 os.rename(r'{}'.format(file_path), r'{}'.format(new_path))
-            
                 Games.save()
             
                 return HttpResponseRedirect(settings.MEDIA_URL + str(Games.file)) #HttpResponse('{}'.format(Games.count_dwnd))

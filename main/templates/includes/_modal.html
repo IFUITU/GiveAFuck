@@ -1,6 +1,6 @@
  <!-- Modal -->
  
- <div class="modal fade" id="myModal" role="dialog">
+ <div class="modal fade" id="{%block modal_id%}{%endblock%}" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->
@@ -16,6 +16,7 @@
               {%block form%}{%endblock%}
               <div class="d-flex justify-content-center">
                 <button type="submit" class="neon_a btn btn-md font-weight-bold">{%block btn%}{%endblock%}</button>
+                
                 <button type="button" class="btn btn-default text-muted font-weight-bold" data-dismiss="modal">Cancel</button>
               </div> 
           </form>

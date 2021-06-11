@@ -15,6 +15,23 @@
     </head>
     <body>
         {%include 'parts/header.html' %}
+
+        <!-- MESSAGES -->
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert {% if message.tags %}{{ message.tags }}{% endif %} alert-dismissible fade show d-flex" role="alert">
+            
+                <p>{{ message }}</p>
+                <div class="message-gif ml-auto" style="background-image: url('{%static 'img/lala.gif'%}');"></div>
+
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          {% endfor %}
+        {% endif %}
+        <!-- ENDMESSAGES -->
+
         <div class="container p-lg-5 c0ntainer">
             {% block content %}{% endblock %}
         </div>

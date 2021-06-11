@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 import hashlib
+from .api_view import GamesApi
 # import random ,string
 app_name = "main"
 # hashlib.sha1(int(id)).hexdigest() 
@@ -14,4 +15,6 @@ urlpatterns = [
     path('Bonuses--/', views.bonuses, name='bonuses'),
     path('hmac=o"xshamadi/5onu5-detail/<int:id>*2/', views.Bonus_Detail.as_view(), name="bonus"),
     path('search/',views.search, name="search"),
+    #APIVIEWS=================================
+    path('GamesApi/', GamesApi.as_view()), 
 ]
